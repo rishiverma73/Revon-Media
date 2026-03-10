@@ -237,7 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             setTimeout(() => {
                 // WhatsApp number from the footer link
-                const phone = '917323014696';
+                const phone = '917323014969';
 
                 // Construct message
                 const text = `Hello Revon Media!%0A%0A*Name*: ${encodeURIComponent(name)}%0A*Email*: ${encodeURIComponent(email)}%0A*Message*: ${encodeURIComponent(message)}`;
