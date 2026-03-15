@@ -394,19 +394,23 @@
                 </div>
                 <div class="contact-form-wrapper card glass-card tilt-card-subtle">
                     <div class="card-glow"></div>
-                    <form id="contactForm" class="contact-form relative-z">
+                    <form action="https://formsubmit.co/rockysinghdangi@gmail.com" method="POST" class="contact-form relative-z">
+                        <!-- FormSubmit configurations -->
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_subject" value="New Website Inquiry">
                         <div class="form-group input-effect">
-                            <input type="text" id="name" placeholder=" " required>
+                            <input type="text" id="name" name="name" placeholder=" " required>
                             <label for="name">Name</label>
                             <span class="focus-border"></span>
                         </div>
                         <div class="form-group input-effect">
-                            <input type="email" id="email" placeholder=" " required>
+                            <input type="email" id="email" name="email" placeholder=" " required>
                             <label for="email">Email</label>
                             <span class="focus-border"></span>
                         </div>
                         <div class="form-group input-effect">
-                            <textarea id="message" rows="4" placeholder=" " required></textarea>
+                            <textarea id="message" name="message" rows="4" placeholder=" " required></textarea>
                             <label for="message">Message</label>
                             <span class="focus-border"></span>
                         </div>

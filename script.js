@@ -235,21 +235,25 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.style.pointerEvents = 'none';
             btn.classList.add('pulse-glow');
 
-            setTimeout(() => {
-                // WhatsApp number from the footer link
-                const phone = '917323014969';
-
-                // Construct message
-                const text = `Hello Revon Media!%0A%0A*Name*: ${encodeURIComponent(name)}%0A*Email*: ${encodeURIComponent(email)}%0A*Message*: ${encodeURIComponent(message)}`;
-                const whatsappUrl = `https://wa.me/${phone}?text=${text}`;
-
-                // Open WhatsApp in new tab
-                window.open(whatsappUrl, '_blank');
-
+            fetch("https://formsubmit.co/ajax/rockysinghdangi@gmail.com", {
+                method: "POST",
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    message: message,
+                    _subject: "New Website Inquiry from " + name
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
                 if (span) span.innerText = 'Sent!';
                 else btn.innerText = 'Sent!';
 
-                btn.style.backgroundColor = '#25D366'; // WhatsApp Green
+                btn.style.backgroundColor = '#25D366'; // Success Green
                 btn.style.borderColor = '#25D366';
                 btn.style.color = '#fff';
                 btn.classList.remove('pulse-glow');
@@ -269,7 +273,28 @@ document.addEventListener('DOMContentLoaded', () => {
                         btn.classList.add('btn-outline');
                     }
                 }, 4000);
-            }, 800);
+            })
+            .catch(error => {
+                console.error("Error sending message:", error);
+                if (span) span.innerText = 'Error!';
+                else btn.innerText = 'Error!';
+                
+                btn.style.backgroundColor = '#dc3545'; // Error Red
+                btn.style.borderColor = '#dc3545';
+                btn.style.color = '#fff';
+                btn.classList.remove('pulse-glow');
+                
+                setTimeout(() => {
+                    if (span) span.innerText = originalText;
+                    else btn.innerText = originalText;
+
+                    btn.style.backgroundColor = '';
+                    btn.style.borderColor = '';
+                    btn.style.color = '';
+                    btn.style.pointerEvents = 'auto';
+                    btn.style.opacity = '1';
+                }, 4000);
+            });
         });
 
         // Save original status for reset
